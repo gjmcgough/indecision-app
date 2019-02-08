@@ -1,7 +1,5 @@
 "use strict";
 
-console.log("app.js!!!!");
-
 var app = {
   title: "Indecision App",
   subTitle: "Put your life in the hands of a computer!!!"
@@ -36,6 +34,17 @@ var template = React.createElement(
   )
 );
 
+function getLocation(location) {
+  if (location) {
+    return React.createElement(
+      "p",
+      null,
+      "Location: ",
+      location
+    );
+  }
+}
+
 var user = {
   name: "John Jacob Jingleheimer Schmitt",
   age: 30,
@@ -48,7 +57,7 @@ var templateTwo = React.createElement(
   React.createElement(
     "h1",
     null,
-    user.name
+    user.name ? user.name : 'Unknown'
   ),
   React.createElement(
     "p",
@@ -56,14 +65,9 @@ var templateTwo = React.createElement(
     "Age: ",
     user.age
   ),
-  React.createElement(
-    "p",
-    null,
-    "Location: ",
-    user.location
-  )
+  getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

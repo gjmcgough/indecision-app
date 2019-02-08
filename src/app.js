@@ -1,5 +1,3 @@
-console.log("app.js!!!!");
-
 var app = {
   title: "Indecision App",
   subTitle: "Put your life in the hands of a computer!!!"
@@ -11,10 +9,16 @@ var template = (
     <p>{app.subTitle}</p>
     <ol>
       <li>This is item one.</li>
-    <li>This is item two.</li>
+      <li>This is item two.</li>
     </ol>
   </div>
 );
+
+function getLocation(location) {
+  if(location){
+    return <p>Location: {location}</p>;
+  }
+}
 
 var user = {
   name: "John Jacob Jingleheimer Schmitt",
@@ -24,12 +28,12 @@ var user = {
 
 var templateTwo = (
   <div>
-    <h1>{user.name}</h1>
+    <h1>{user.name ? user.name : 'Unknown'}</h1>
     <p>Age: {user.age}</p>
-    <p>Location: {user.location}</p>
+    {getLocation(user.location)}
   </div>
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

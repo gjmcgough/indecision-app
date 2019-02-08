@@ -2,7 +2,8 @@
 
 var app = {
   title: "Indecision App",
-  subTitle: "Put your life in the hands of a computer!!!"
+  subTitle: "Put your life in the hands of a computer!!!",
+  options: ['One', 'Two']
 };
 
 var template = React.createElement(
@@ -13,10 +14,19 @@ var template = React.createElement(
     null,
     app.title
   ),
-  React.createElement(
+  app.subTitle && React.createElement(
     "p",
     null,
     app.subTitle
+  ),
+  app.options.length > 0 ? React.createElement(
+    "p",
+    null,
+    "Here are your options"
+  ) : React.createElement(
+    "p",
+    null,
+    "No options."
   ),
   React.createElement(
     "ol",
@@ -59,7 +69,7 @@ var templateTwo = React.createElement(
     null,
     user.name ? user.name : 'Unknown'
   ),
-  user.age >= 18 && React.createElement(
+  user.age && user.age >= 18 && React.createElement(
     "p",
     null,
     "Age: ",
@@ -70,4 +80,4 @@ var templateTwo = React.createElement(
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

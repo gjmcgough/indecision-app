@@ -26,14 +26,20 @@ const appRoot = document.getElementById('app');
 
 // const numbers = [55,101,1000];
 
+const onMakeDecision = () => {
+  const randomNum = (Math.floor(Math.random() * app.options.length));
+  const option = app.options[randomNum];
+  alert(option);
+};
+
 const renderIndecisionApp = () => {
   const template = (
     <div>
       <h1>{app.title}</h1>
       {app.subTitle && <p>{app.subTitle}</p>}
       <p>{app.options.length > 0 ? 'Here are your options' : 'No options.'}</p>
-      <p>{app.options.length}</p>
-      <button onClick={resetForm}>Reset</button>
+      <button disabled={app.options.length <= 0} onClick={onMakeDecision}>Where should I eat?</button><br/><br/>
+      <button onClick={resetForm}>Reset options</button>
       <ol>
         {
           app.options.map((option) => {

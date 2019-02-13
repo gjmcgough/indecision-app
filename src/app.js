@@ -24,6 +24,8 @@ const resetForm = (e) => {
 
 const appRoot = document.getElementById('app');
 
+// const numbers = [55,101,1000];
+
 const renderIndecisionApp = () => {
   const template = (
     <div>
@@ -33,13 +35,16 @@ const renderIndecisionApp = () => {
       <p>{app.options.length}</p>
       <button onClick={resetForm}>Reset</button>
       <ol>
-        <li>This is item one.</li>
-        <li>This is item two.</li>
-        <form onSubmit={onFormSubmit}>
-          <input type="text" name="option"/>
-          <button>Add Option</button>
-        </form>
+        {
+          app.options.map((option) => {
+            return <li key={option}>Option: {option}</li>
+          })
+        }
       </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option"/>
+        <button>Add Option</button>
+      </form>
     </div>
   );
 

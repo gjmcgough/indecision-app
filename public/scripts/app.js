@@ -26,6 +26,8 @@ var resetForm = function resetForm(e) {
 
 var appRoot = document.getElementById('app');
 
+// const numbers = [55,101,1000];
+
 var renderIndecisionApp = function renderIndecisionApp() {
   var template = React.createElement(
     "div",
@@ -58,25 +60,23 @@ var renderIndecisionApp = function renderIndecisionApp() {
     React.createElement(
       "ol",
       null,
+      app.options.map(function (option) {
+        return React.createElement(
+          "li",
+          { key: option },
+          "Option: ",
+          option
+        );
+      })
+    ),
+    React.createElement(
+      "form",
+      { onSubmit: onFormSubmit },
+      React.createElement("input", { type: "text", name: "option" }),
       React.createElement(
-        "li",
+        "button",
         null,
-        "This is item one."
-      ),
-      React.createElement(
-        "li",
-        null,
-        "This is item two."
-      ),
-      React.createElement(
-        "form",
-        { onSubmit: onFormSubmit },
-        React.createElement("input", { type: "text", name: "option" }),
-        React.createElement(
-          "button",
-          null,
-          "Add Option"
-        )
+        "Add Option"
       )
     )
   );

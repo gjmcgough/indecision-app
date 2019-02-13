@@ -6,10 +6,11 @@ var app = {
 
 var appRoot = document.getElementById('app');
 
-var visible = 0;
+var visible = false;
+
 var setVisible = function setVisible(e) {
   e.preventDefault();
-  visible === 0 ? visible = 1 : visible = 0;
+  visible = !visible;
   renderApp();
 };
 
@@ -25,13 +26,13 @@ var renderApp = function renderApp() {
     React.createElement(
       "button",
       { onClick: setVisible },
-      visible === 0 ? "Show Deets" : "Hide Deets"
+      visible ? "Hide Deets" : "Hide Deets"
     ),
-    visible === 0 ? '' : React.createElement(
+    visible ? React.createElement(
       "p",
       null,
       "These are your deets!"
-    )
+    ) : ''
   );
 
   ReactDOM.render(template, appRoot);

@@ -4,10 +4,11 @@ const app = {
 
 let appRoot = document.getElementById('app');
 
-let visible = 0;
+let visible = false;
+
 const setVisible = (e) => {
   e.preventDefault();
-  (visible === 0) ? visible = 1 : visible = 0;
+  visible = !visible;
   renderApp();
 }
 
@@ -16,10 +17,10 @@ const renderApp = () => {
     <div>
       <h1>{app.title}</h1>
       <button onClick={setVisible}>
-        {(visible === 0 ) ? "Show Deets" : "Hide Deets" }
+        {(visible) ? "Hide Deets" : "Hide Deets" }
       </button>
       {
-        (visible === 0) ? '' : <p>These are your deets!</p>
+        (visible) ? <p>These are your deets!</p> : ''
       }
     </div>
   );

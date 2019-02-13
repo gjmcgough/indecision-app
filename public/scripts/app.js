@@ -1,95 +1,40 @@
-"use strict";
+'use strict';
 
-var app = {
-  title: "Indecision App",
-  subTitle: "Put your life in the hands of a computer!!!",
-  options: []
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var onFormSubmit = function onFormSubmit(e) {
-  e.preventDefault();
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  var option = e.target.elements.option.value;
+var Person = function () {
+  function Person() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Anonymous";
+    var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = '';
-    renderIndecisionApp();
+    _classCallCheck(this, Person);
+
+    console.log('test');
+    this.name = name;
+    this.age = age;
   }
-};
 
-var resetForm = function resetForm(e) {
-  e.preventDefault();
-  app.options = [];
-  renderIndecisionApp();
-};
+  _createClass(Person, [{
+    key: 'getGreeting',
+    value: function getGreeting() {
+      return 'Hi. I am ' + this.name + '!';
+    }
+  }, {
+    key: 'getDescription',
+    value: function getDescription() {
+      return this.name + ' is ' + this.age + ' year(s) old!';
+    }
+  }]);
 
-var appRoot = document.getElementById('app');
+  return Person;
+}();
 
-// const numbers = [55,101,1000];
+var me = new Person('Greg McG', 30);
 
-var onMakeDecision = function onMakeDecision() {
-  var randomNum = Math.floor(Math.random() * app.options.length);
-  var option = app.options[randomNum];
-  alert(option);
-};
+console.log(me.getDescription());
 
-var renderIndecisionApp = function renderIndecisionApp() {
-  var template = React.createElement(
-    "div",
-    null,
-    React.createElement(
-      "h1",
-      null,
-      app.title
-    ),
-    app.subTitle && React.createElement(
-      "p",
-      null,
-      app.subTitle
-    ),
-    React.createElement(
-      "p",
-      null,
-      app.options.length > 0 ? 'Here are your options' : 'No options.'
-    ),
-    React.createElement(
-      "button",
-      { disabled: app.options.length <= 0, onClick: onMakeDecision },
-      "Where should I eat?"
-    ),
-    React.createElement("br", null),
-    React.createElement("br", null),
-    React.createElement(
-      "button",
-      { onClick: resetForm },
-      "Reset options"
-    ),
-    React.createElement(
-      "ol",
-      null,
-      app.options.map(function (option) {
-        return React.createElement(
-          "li",
-          { key: option },
-          "Option: ",
-          option
-        );
-      })
-    ),
-    React.createElement(
-      "form",
-      { onSubmit: onFormSubmit },
-      React.createElement("input", { type: "text", name: "option" }),
-      React.createElement(
-        "button",
-        null,
-        "Add Option"
-      )
-    )
-  );
+var mew = new Person();
 
-  ReactDOM.render(template, appRoot);
-};
-
-renderIndecisionApp();
+console.log(mew.getDescription());

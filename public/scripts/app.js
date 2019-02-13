@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var app = {
   title: "Visibility Toggle"
@@ -15,22 +15,22 @@ var setVisible = function setVisible(e) {
 
 var renderApp = function renderApp() {
   var template = React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-      'h1',
+      "h1",
       null,
       app.title
     ),
     React.createElement(
-      'button',
+      "button",
       { onClick: setVisible },
-      'Show dem DEETS'
+      visible === 0 ? "Show Deets" : "Hide Deets"
     ),
     visible === 0 ? '' : React.createElement(
-      'p',
+      "p",
       null,
-      'These are your deets!'
+      "These are your deets!"
     )
   );
 

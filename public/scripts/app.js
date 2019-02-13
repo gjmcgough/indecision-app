@@ -1,50 +1,89 @@
 "use strict";
 
-// arguments no longer bound example
-
-// const add = (a, b) => {
-//   console.log(arguments);
-//   return a + b;
-// };
-
-// console.log(add(5,6));
-
-// this no longer bound example
-
-var user = {
-  name: "Greg",
-  cities: ["Chicago", "Atlanta", "San Diego"],
-  printPlacesLived: function printPlacesLived() {
-    var _this = this;
-
-    return this.cities.map(function (city) {
-      return _this.name + " has lived in " + city;
-    });
-
-    // console.log(this.name);
-    // console.log(this.cities);
-
-    // this.cities.forEach((city) => {
-    //   console.log(this.name + " has lived in " + city);
-    // });
-  }
+var app = {
+  title: "Indecision App",
+  subTitle: "Put your life in the hands of a computer!!!",
+  options: ['One', 'Two']
 };
 
-console.log(user.printPlacesLived());
+var template = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    app.title
+  ),
+  app.subTitle && React.createElement(
+    "p",
+    null,
+    app.subTitle
+  ),
+  app.options.length > 0 ? React.createElement(
+    "p",
+    null,
+    "Here are your options"
+  ) : React.createElement(
+    "p",
+    null,
+    "No options."
+  ),
+  React.createElement(
+    "ol",
+    null,
+    React.createElement(
+      "li",
+      null,
+      "This is item one."
+    ),
+    React.createElement(
+      "li",
+      null,
+      "This is item two."
+    )
+  )
+);
 
-var multiplier = {
-  //numbers - array of numbers to multiply
-  numbers: [10, 20, 30],
-  // multiplyBy - single number
-  multiplyBy: 3,
-  // multiply - new array where numbes have been multiplied
-  multiply: function multiply() {
-    var _this2 = this;
+var count = 0;
 
-    return this.numbers.map(function (numNum) {
-      return _this2.multiplyBy * numNum;
-    });
-  }
+var addOne = function addOne() {
+  console.log('addOne');
 };
 
-console.log(multiplier.multiply());
+var minusOne = function minusOne() {
+  console.log('minusOne');
+};
+
+var reset = function reset() {
+  console.log('reset');
+};
+
+var template2 = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    "Count: ",
+    count
+  ),
+  React.createElement(
+    "button",
+    { onClick: addOne },
+    "+1"
+  ),
+  React.createElement(
+    "button",
+    { onClick: minusOne },
+    "-1"
+  ),
+  React.createElement(
+    "button",
+    { onClick: reset },
+    "RESET"
+  )
+);
+
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(template2, appRoot);

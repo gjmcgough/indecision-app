@@ -1,6 +1,5 @@
 class Person {
   constructor(name = "Anonymous", age = 0) {
-    console.log('test');
     this.name = name;
     this.age = age;
   }
@@ -12,10 +11,42 @@ class Person {
   }
 }
 
-const me = new Person('Greg McG', 30);
+class Student extends Person {
+  constructor(name, age, major){
+    super(name,age);
+    this.major = major;
+  }
+  hasMajor(){
+    return !!this.major;
+  }
+  getDescription(){
+    let description = super.getDescription();
 
-console.log(me.getDescription());
+    if (this.hasMajor()){
+      description += ` Their major is ${this.major}.`
+    }
+    return description;
+  }
+}
 
-const mew = new Person();
+class Traveler extends Person {
+  constructor(name, age, homeLocation){
+    super(name, age);
+    this.homeLocation = homeLocation;
+  }
+  getGreeting(){
+    let greeting = super.getGreeting();
+    if (this.homeLocation){
+      greeting += ` I'm visiting from ${this.homeLocation}.`
+    }
+    return greeting;
+  }
+}
 
-console.log(mew.getDescription());
+const me = new Traveler('Greg McG', 30, 'San Diego');
+
+console.log(me.getGreeting());
+
+const mew = new Traveler();
+
+console.log(mew.getGreeting());

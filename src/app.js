@@ -34,7 +34,7 @@ class Action extends React.Component {
       <div>
         <button onClick={this.handlePick}>What should I do?</button>
       </div>
-    )
+    );
   }
 }
 
@@ -55,7 +55,7 @@ class Options extends React.Component {
           this.props.options.map((option) => <Option key={option} optionText={option}/>)
         }
       </div>
-    )
+    );
   }
 }
 

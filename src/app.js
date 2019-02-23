@@ -93,7 +93,7 @@ const Options = (props) => {
 }
 
 const Option = (props) => {
-  return <p>Option: {props.optionText}</p>;
+  return <p>{props.optionText}</p>;
 }
 
 class AddOption extends React.Component {

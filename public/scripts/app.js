@@ -18,7 +18,7 @@ var VisibilityToggle = function (_React$Component) {
 
     _this.handleVisibilityToggle = _this.handleVisibilityToggle.bind(_this);
     _this.state = {
-      visible: true
+      visible: false
     };
     return _this;
   }
@@ -46,7 +46,7 @@ var VisibilityToggle = function (_React$Component) {
         React.createElement(
           'button',
           { onClick: this.handleVisibilityToggle },
-          'Toggle Visibility'
+          this.state.visible ? 'Hide details' : 'Show details'
         ),
         this.state.visible ? React.createElement(
           'p',
@@ -61,35 +61,3 @@ var VisibilityToggle = function (_React$Component) {
 }(React.Component);
 
 ReactDOM.render(React.createElement(VisibilityToggle, null), document.getElementById('app'));
-
-// const app = {
-//   title: "Visibility Toggle"
-// }
-//
-// let appRoot = document.getElementById('app');
-//
-// let visible = false;
-//
-// const setVisible = (e) => {
-//   e.preventDefault();
-//   visible = !visible;
-//   renderApp();
-// }
-//
-// const renderApp = () => {
-//   const template = (
-//     <div>
-//       <h1>{app.title}</h1>
-//       <button onClick={setVisible}>
-//         {(visible) ? "Hide Deets" : "Hide Deets" }
-//       </button>
-//       {
-//         (visible) ? <p>These are your deets!</p> : ''
-//       }
-//     </div>
-//   );
-//
-//   ReactDOM.render(template, appRoot);
-// }
-//
-// renderApp();

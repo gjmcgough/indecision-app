@@ -28,18 +28,22 @@ var Counter = function (_React$Component) {
   _createClass(Counter, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var json = localStorage.getItem('count');
-      var count = JSON.parse(json);
+      var stringCount = localStorage.getItem('count');
+      var count = parseInt(stringCount, 10);
 
-      this.setState(function () {
-        return { count: count };
-      });
+      if (!isNaN(count)) {
+        this.setState(function () {
+          return { count: count };
+        });
+      };
     }
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
-      var json = JSON.stringify(this.state.count);
-      localStorage.setItem('count', json);
+      if (prevState.count !== this.state.count) {
+        var json = JSON.stringify(this.state.count);
+        localStorage.setItem('count', json);
+      }
     }
   }, {
     key: 'handleAddOne',

@@ -9,6 +9,15 @@ class IndecisionApp extends React.Component {
       options: props.options
     };
   }
+  componentDidMount() {
+    console.log("Component did mount");
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Component did update");
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
   handleDeleteOptions() {
     this.setState(() => ({ options: [] }));
     // THE ABOVE LINE IS THE SAME AS WHAT IS COMMENTED OUT BELOW

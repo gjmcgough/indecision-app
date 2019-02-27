@@ -53,7 +53,7 @@ export default class IndecisionApp extends React.Component {
   }
   componentWillUnmount() {
     console.log('componentWillUnmount');
-  }
+  };
   render() {
     const subtitle = "Put your life in the hands of a Computer!";
     return (

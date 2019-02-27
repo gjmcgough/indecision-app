@@ -8,12 +8,30 @@ export default class IndecisionApp extends React.Component {
   state = {
     options: []
   };
-  constructor(props) {
-    super(props);
-    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-    this.handlePick = this.handlePick.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.handleDeleteOption = this.handleDeleteOption.bind(this);
+  handleDeleteOptions = () => {
+    this.setState(() => ({ options: [] }));
+  }
+  handleDeleteOption = (optionToRemove) => {
+    this.setState((prevState) => ({
+      options: prevState.options.filter((option) => optionToRemove !== option)
+    }));
+  }
+  handlePick = () => {
+    this.setState(() => {
+      const randNum = (Math.floor(Math.random() * this.state.options.length));
+      return (
+        alert(this.state.options[randNum])
+      );
+    });
+  }
+  handleAddOption = (option) => {
+    if(!option) {
+      return 'enter a valid value to add item';
+    } else if (this.state.options.indexOf(option) > -1){
+      return 'this option exists already';
+    }
+
+    this.setState((prevState) => ({ options: prevState.options.concat(option) }));
   }
   componentDidMount() {
     try {
@@ -35,31 +53,6 @@ export default class IndecisionApp extends React.Component {
   }
   componentWillUnmount() {
     console.log('componentWillUnmount');
-  }
-  handleDeleteOptions() {
-    this.setState(() => ({ options: [] }));
-  }
-  handleDeleteOption(optionToRemove) {
-    this.setState((prevState) => ({
-      options: prevState.options.filter((option) => optionToRemove !== option)
-    }));
-  }
-  handlePick() {
-    this.setState(() => {
-      const randNum = (Math.floor(Math.random() * this.state.options.length));
-      return (
-        alert(this.state.options[randNum])
-      );
-    });
-  }
-  handleAddOption(option) {
-    if(!option) {
-      return 'enter a valid value to add item';
-    } else if (this.state.options.indexOf(option) > -1){
-      return 'this option exists already';
-    }
-
-    this.setState((prevState) => ({ options: prevState.options.concat(option) }));
   }
   render() {
     const subtitle = "Put your life in the hands of a Computer!";

@@ -5,15 +5,15 @@ import Header from './Header';
 import Action from './Action';
 
 export default class IndecisionApp extends React.Component {
+  state = {
+    options: []
+  };
   constructor(props) {
     super(props);
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
     this.handlePick = this.handlePick.bind(this);
     this.handleAddOption = this.handleAddOption.bind(this);
     this.handleDeleteOption = this.handleDeleteOption.bind(this);
-    this.state = {
-      options: []
-    };
   }
   componentDidMount() {
     try {
